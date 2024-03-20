@@ -6,4 +6,6 @@ public interface TesterRepositoryPort {
     Tester findById(Long id);
 
     void updateById(Tester tester);
+
+    void deleteById(Long id);
 }
