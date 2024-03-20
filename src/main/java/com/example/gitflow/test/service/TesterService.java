@@ -1,5 +1,6 @@
 package com.example.gitflow.test.service;
 
+import com.example.gitflow.test.service.dto.UpdateTesterCommand;
 import com.example.gitflow.test.model.Tester;
 import com.example.gitflow.test.service.dto.TesterResponse;
 import com.example.gitflow.test.service.port.TesterRepositoryPort;
@@ -13,6 +14,15 @@ public class TesterService {
 
     public TesterResponse findById(Long id) {
         Tester tester = testerRepositoryPort.findById(id);
+
+        return TesterResponse.of(tester);
+    }
+
+    public TesterResponse updateById(UpdateTesterCommand command) {
+        Tester tester = testerRepositoryPort.findById(command.id());
+        tester.update(command.name(), command.password());
+
+        testerRepositoryPort.updateById(tester);
 
         return TesterResponse.of(tester);
     }
