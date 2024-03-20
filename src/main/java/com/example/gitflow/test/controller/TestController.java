@@ -5,6 +5,7 @@ import com.example.gitflow.test.service.TesterService;
 import com.example.gitflow.test.service.dto.TesterResponse;
 import com.example.gitflow.test.service.dto.UpdateTesterCommand;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,5 +29,10 @@ public class TestController {
         UpdateTesterCommand command = new UpdateTesterCommand(id, request.getName(), request.getPassword());
 
         return testerService.updateById(command);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        testerService.deleteById(id);
     }
 }

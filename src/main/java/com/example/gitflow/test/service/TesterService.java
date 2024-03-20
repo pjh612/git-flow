@@ -26,4 +26,8 @@ public class TesterService {
 
         return TesterResponse.of(tester);
     }
+
+    public void deleteById(Long id) {
+        testerRepositoryPort.deleteById(id);
+    }
 }

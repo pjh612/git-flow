@@ -2,7 +2,6 @@ package com.example.gitflow.test.infrastructure.persistence;
 
 import com.example.gitflow.test.model.Tester;
 import com.example.gitflow.test.service.port.TesterRepositoryPort;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -34,4 +33,9 @@ public class TesterRepositoryAdapter implements TesterRepositoryPort {
     }
 
 
+
+    @Override
+    public void deleteById(Long id) {
+        testerMap.remove(id);
+    }
 }
